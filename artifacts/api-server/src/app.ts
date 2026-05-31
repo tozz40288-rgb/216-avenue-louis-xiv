@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === "production") {
   const staticPath = path.resolve(__dirname, "../../boutique/dist/public");
   if (existsSync(staticPath)) {
     app.use(express.static(staticPath));
-    app.get("*", (req, res, next) => {
+   app.get('/{*path}', ...)  // ✅ syntaxe Express 5 => {
       if (req.path.startsWith("/api/")) return next();
       res.sendFile(path.join(staticPath, "index.html"));
     });
