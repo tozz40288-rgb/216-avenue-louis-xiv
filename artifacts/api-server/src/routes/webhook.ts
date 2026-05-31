@@ -3,7 +3,7 @@ import { captureStripeSession } from "../lib/capture-order";
 
 const router: IRouter = Router();
 
-router.post("/webhook/stripe", async (req: Request, res: Response): Promise<void> => {
+router.post("/", async (req: Request, res: Response): Promise<void> => {
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
   if (!webhookSecret) {

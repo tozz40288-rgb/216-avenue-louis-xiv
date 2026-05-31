@@ -31,7 +31,7 @@ app.use(
 
 app.use(cors());
 
-app.use("/api", express.raw({ type: "application/json" }), webhookRouter);
+app.use("/api/webhook/stripe", express.raw({ type: "application/json" }), webhookRouter);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
