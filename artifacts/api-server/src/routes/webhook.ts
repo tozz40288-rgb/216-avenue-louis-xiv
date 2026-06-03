@@ -34,7 +34,7 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
     const session = event.data.object as import("stripe").Stripe.Checkout.Session;
 
     if (session.payment_status === "paid") {
-      const origin = `https://${process.env.REPLIT_DOMAINS?.split(",")[0]}`;
+      const origin = process.env.APP_URL || "";
       try {
         const order = await captureStripeSession(session.id, origin);
         req.log.info({ orderId: order.id }, "Order captured via webhook");
