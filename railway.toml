@@ -2,7 +2,7 @@
 builder = "nixpacks"
 buildCommand = "npm install -g pnpm@10 && (export PATH=\"$(npm config get prefix)/bin:$PATH\" && pnpm install --no-frozen-lockfile && BASE_PATH=/ NODE_ENV=production pnpm --filter @workspace/boutique run build && pnpm --filter @workspace/api-server run build)"
 [deploy]
-startCommand = "(node_modules/.bin/drizzle-kit push --config lib/db/drizzle.config.ts --accept-data-loss || true) && node --enable-source-maps artifacts/api-server/dist/index.mjs"
+startCommand = "node_modules/.bin/drizzle-kit push --config lib/db/drizzle.config.ts --accept-data-loss || true && node --enable-source-maps artifacts/api-server/dist/index.mjs"
 healthcheckPath = "/api/healthz"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
