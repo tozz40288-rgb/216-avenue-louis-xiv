@@ -42,9 +42,7 @@ router.post("/checkout", async (req, res): Promise<void> => {
       const { default: Stripe } = await import("stripe");
       const stripe = new Stripe(stripeKey);
 
-      const origin =
-        req.headers.origin ||
-        `https://${process.env.REPLIT_DOMAINS?.split(",")[0]}`;
+      const origin = req.headers.origin || process.env.APP_URL || "";
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
