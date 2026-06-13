@@ -6,7 +6,6 @@ interface ProductCardProps {
 }
 
 const productGradients: Record<string, string> = {
-  tshirt:    "linear-gradient(160deg, #d4d4d4 0%, #b0b0b0 100%)",
   hoodie:    "linear-gradient(160deg, #1a1a1a 0%, #3a3a3a 100%)",
   crewneck:  "linear-gradient(160deg, #2a2a2a 0%, #555 100%)",
   jogging:   "linear-gradient(160deg, #1c1c1c 0%, #404040 100%)",
@@ -21,10 +20,18 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link href={`/shop/${product.id}`} className="group block border border-foreground/10 hover:border-foreground/30 transition-colors cursor-pointer">
       <div className="aspect-[3/4] relative overflow-hidden">
-        <div
-          className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
-          style={{ background: gradient }}
-        />
+        {product.image ? (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        ) : (
+          <div
+            className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+            style={{ background: gradient }}
+          />
+        )}
         {product.badge && (
           <div className="absolute top-4 left-4 z-10">
             <span className="text-[0.6rem] uppercase tracking-widest bg-background/80 backdrop-blur-sm px-2 py-1 font-semibold">

@@ -4,7 +4,6 @@ import { products, formatPrice } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 
 const productGradients: Record<string, string> = {
-  tshirt:    "linear-gradient(160deg, #d4d4d4 0%, #b0b0b0 100%)",
   hoodie:    "linear-gradient(160deg, #1a1a1a 0%, #3a3a3a 100%)",
   crewneck:  "linear-gradient(160deg, #2a2a2a 0%, #555 100%)",
   jogging:   "linear-gradient(160deg, #1c1c1c 0%, #404040 100%)",
@@ -64,10 +63,20 @@ export default function ProductPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-0">
-            <div
-              className="aspect-[3/4] w-full"
-              style={{ background: gradient }}
-            />
+            <div className="aspect-[3/4] w-full overflow-hidden">
+              {product.image ? (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div
+                  className="w-full h-full"
+                  style={{ background: gradient }}
+                />
+              )}
+            </div>
 
             <div className="md:pl-16 py-6 flex flex-col justify-start">
               {product.badge && (

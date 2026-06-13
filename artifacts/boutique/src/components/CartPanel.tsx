@@ -52,15 +52,22 @@ export default function CartPanel() {
               {items.map((item) => (
                 <div
                   key={`${item.product.id}-${item.size}`}
-                  className="py-6 border-b border-foreground/10 flex items-start gap-6 px-6"
+                  className="py-6 border-b border-foreground/10 flex items-start gap-4 px-6"
                 >
-                  <div
-                    className="w-16 h-20 shrink-0"
-                    style={{ background: "linear-gradient(135deg, #e2e2e2 0%, #c8c8c8 100%)" }}
-                  />
+                  <div className="w-16 h-20 shrink-0 overflow-hidden bg-foreground/5">
+                    {item.product.image ? (
+                      <img
+                        src={item.product.image}
+                        alt={item.product.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #e2e2e2 0%, #c8c8c8 100%)" }} />
+                    )}
+                  </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start mb-1">
-                      <p className="font-serif text-base tracking-wide">{item.product.name}</p>
+                      <p className="font-serif text-base tracking-wide leading-tight">{item.product.name}</p>
                       <button
                         onClick={() => removeItem(item.product.id, item.size)}
                         className="text-muted-foreground hover:text-foreground transition-colors ml-4 shrink-0"

@@ -11,11 +11,11 @@ const navLinks = [
 
 function Logo() {
   return (
-    <div className="flex flex-col items-center justify-center space-y-1">
-      <span className="text-foreground tracking-[0.4em] text-[0.55rem] leading-none">
+    <div className="flex flex-col items-center justify-center space-y-0.5">
+      <span className="text-foreground tracking-[0.3em] text-[0.5rem] leading-none">
         • • •
       </span>
-      <span className="font-sans text-[0.75rem] tracking-[0.25em] uppercase font-semibold leading-none">
+      <span className="font-sans text-[0.6rem] sm:text-[0.75rem] tracking-[0.15em] sm:tracking-[0.25em] uppercase font-semibold leading-none whitespace-nowrap">
         216 Avenue Louis XIV
       </span>
     </div>
@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-40 bg-background/90 backdrop-blur-sm border-b border-foreground/5">
-        <div className="w-full px-6 md:px-12 h-16 flex items-center justify-between">
+        <div className="w-full px-4 md:px-12 h-16 flex items-center justify-between">
           <div className="w-1/3 flex justify-start">
             <button
               onClick={() => setMenuOpen(true)}
